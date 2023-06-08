@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --hue: 100;
+    --stauration: 25%;
+    --foreground-color-100: hsl(var(--hue), var(--stauration), 80%);
+    --foreground-color-200: hsl(var(--hue), var(--stauration), 75%);
+    --foreground-color-300: hsl(var(--hue), var(--stauration), 60%);
+    --background-color-100: hsl(var(--hue), var(--stauration), 10%);
+    --background-color-200: hsl(var(--hue), var(--stauration), 20%);
+    --background-color-300: hsl(var(--hue), var(--stauration), 30%);
+    --background-color-400: hsl(var(--hue), var(--stauration), 40%);
+}
+
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--background-color-200);
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.board {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.paddle {
+    --position: 50;
+
+    position: absolute;
+    background-color: var(--foreground-color-200);
+    width: 15vw;
+    min-width: 100px;
+    left: calc(var(--position) * 1%);
+    height: 1vw;
+    transform: translateX(-50%);
+    border-radius: 8px;
+}
+
+.paddle.top {
+    top: 1%;
+}
+
+.paddle.bottom {
+    bottom: 1%;
+}
+
+.ball {
+    --x: 50;
+    --y: 50;
+
+    position: absolute;
+    background-color: var(--foreground-color-200);
+    top: calc(var(--y) * 1%);
+    left: calc(var(--x) * 1%);
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 40px;
+    padding: 8px;
+    background-color: var(--background-color-300);
+    border-bottom: 1px solid var(--background-color-300);
+}
+
+.score-inner {
+    color: var(--foreground-color-100);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.score .number {
+    position: relative;
+    padding: 8px 16px 16px;
+    background-color: var(--background-color-100);
+    border-radius: 12px;
+    width: 80px;
+    text-align: center;
+}
+
+.score .number:after {
+
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+}
+
+.score .number.player:after {
+    content: "PLAYER";
+}
+
+.score .number.cpu:after {
+    content: "CPU";
+}
+
+.score .connect {
+    font-size: 20px;
+}
+
+.controls .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 440px;
+    height: 300px;
+    background-color: var(--background-color-100);
+    border: 1px solid var(--background-color-300);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.controls .overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--foreground-color-100);
+}
+
+.message h3 {
+    font-size: 32px;
+    margin: 0 0 20px
+}
+
+.message p {
+    font-size: 24px;
+    margin: 0 0 20px;
+}
+
+.btn {
+    background-color: var(--background-color-400);
+    border: 1px solid var(--background-color-400);
+    color: var(--foreground-color-100);
+    padding: 15px 30px;
+    border-radius: 8px;
+}
